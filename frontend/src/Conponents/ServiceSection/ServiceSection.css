@@ -1,0 +1,33 @@
+.services {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f5f5f5;
+  }
+  
+  .service-box {
+    flex-basis: 30%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .service-box img {
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .service-box h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .service-box p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
