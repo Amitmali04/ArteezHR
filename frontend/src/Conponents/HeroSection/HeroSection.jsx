@@ -5,7 +5,7 @@ function HeroSection() {
   return (
     <section className="hero">
       <div className="hero-bg">
-        <img src="path/to/background-image.jpg" alt="Background" />
+        <img src="../Images/banner2.jpg" alt="Background" />
       </div>
       <div className="hero-content">
         <h1>Welcome to our website</h1>

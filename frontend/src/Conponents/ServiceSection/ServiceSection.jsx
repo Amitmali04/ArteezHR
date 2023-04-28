@@ -1,25 +1,47 @@
-import React from 'react';
-import './ServiceSection.css';
+import React from "react";
+import "./ServiceSection.css";
 
 function ServicesSection() {
+  const services = [
+    {
+      id: "1",
+      img: "../Images/learning-skills.svg",
+      heading: "Academic Skill Analysis",
+      description:
+        "Get in-depth subject wise analysis and analysis of aptitude and reasoning skills.",
+    },
+
+    {
+      id: "2",
+      img: "../Images/scorecard.svg",
+      heading: "Scorecard",
+      description:
+        "Get your all-India percentile, state percentile, city percentile and percentage score.",
+    },
+
+    {
+      id: "3",
+      img: "../Images/personalised-counselling.svg",
+      heading: "Personalised Counselling",
+      description:
+        "After the test, you will also receive personalised counselling from experts on how to work and improve your focus areas.",
+    },
+  ];
   return (
-    <section className="services">
-      <div className="service-box">
-        <img src="path/to/service-image-1.jpg" alt="Service 1" />
-        <h2>Service 1 Title</h2>
-        <p>Service 1 Description</p>
-      </div>
-      <div className="service-box">
-        <img src="path/to/service-image-2.jpg" alt="Service 2" />
-        <h2>Service 2 Title</h2>
-        <p>Service 2 Description</p>
-      </div>
-      <div className="service-box">
-        <img src="path/to/service-image-3.jpg" alt="Service 3" />
-        <h2>Service 3 Title</h2>
-        <p>Service 3 Description</p>
-      </div>
-    </section>
+    <>
+      <h2>Services</h2>
+      <section className="services">
+        {services.map((ser, id) => {
+          return (
+            <div className="service-box" key={id}>
+              <img src={ser.img} alt="Service 1" />
+              <h2>{ser.heading}</h2>
+              <p>{ser.description}</p>
+            </div>
+          );
+        })}
+      </section>
+    </>
   );
 }
 
