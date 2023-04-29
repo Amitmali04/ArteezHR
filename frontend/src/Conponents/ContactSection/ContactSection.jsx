@@ -7,44 +7,36 @@ function ContactSection() {
     email: "",
     message: "",
   });
-console.log(contactData);
-  const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [messageError, setMessageError] = useState("");
+console.log(contactData)
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Validate name field
-    if (!contactData.name.trim()) {
-      setNameError("Please enter your name.");
-      return;
-    } else {
-      setNameError("");
-    }
+    const { name, email, message } = contactData;
 
-    // Validate email field
-    if (!contactData.email.trim()) {
-      setEmailError("Please enter your email.");
-      return;
-    } else if (!/\S+@\S+\.\S+/.test(contactData.email)) {
-      setEmailError("Please enter a valid email address.");
-      return;
-    } else {
-      setEmailError("");
-    }
+    const res = await fetch("http://localhost:8003/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body : JSON.stringify({
+                name, email, message
+            })
+        });
 
-    // Validate message field
-    if (!contactData.message.trim()) {
-      setMessageError("Please enter your message.");
-      return;
-    } else {
-      setMessageError("");
-    }
+        const data = await res.json();
+        console.log(data);
 
-    // If all fields are valid, submit the form
-    alert("Thank you for submitting the form!");
-    setContactData({ name: "", email: "", message: "" });
+        if (res.status === 201 || data) {
+          setContactData(data)
+          alert("Thank you");
+          setContactData();
+
+        } else {
+          console.log("error ");
+          alert("error");
+        }
   };
 
   return (
@@ -63,7 +55,7 @@ console.log(contactData);
             }
             required
           />
-          {nameError && <span className="error">{nameError}</span>}
+   
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
@@ -77,7 +69,7 @@ console.log(contactData);
             }
             required
           />
-          {emailError && <span className="error">{emailError}</span>}
+
         </div>
         <div className="form-group">
           <label htmlFor="message">Message:</label>
@@ -91,7 +83,7 @@ console.log(contactData);
             }
             required
           ></textarea>
-          {messageError && <span className="error">{messageError}</span>}
+         
         </div>
         <button type="submit">Submit</button>
       </form>
