@@ -31,12 +31,14 @@ console.log(contactData)
         if (res.status === 201 || data) {
           setContactData(data)
           alert("Thank you");
-          setContactData();
-
+         
         } else {
           console.log("error ");
-          alert("error");
+          
+        alert("error");
         }
+
+        window.location.reload();
   };
 
   return (
